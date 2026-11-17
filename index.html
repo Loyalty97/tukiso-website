@@ -485,9 +485,7 @@
 
             <!-- UPDATED FORMSPREE ENQUIRY FORM -->
 
-            <form class="contact-form"
-                  action="https://formspree.io/f/xwloopln"
-                  method="POST">
+            <form id="contactForm" class="contact-form">
 
                 <h3>Send Us an Enquiry</h3>
 
@@ -495,7 +493,7 @@
 
                 <input
                     type="text"
-                    id="name"
+                    id="customer_name"
                     name="name"
                     placeholder="Enter your full name"
                     required
@@ -583,6 +581,7 @@
                     Please provide accurate contact details.
                 </small>
 
+            <p id="formMessage"></p>
             </form>
 
         </div>
