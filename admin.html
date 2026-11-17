@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TUKISO Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 70px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #0001;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .admin-button {
+            background: #102f63;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stats {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        td select {
+            padding: 7px;
+        }
+
+        .message-cell {
+            max-width: 250px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #dashboardMessage {
+            color: #102f63;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- LOGIN PAGE -->
+
+    <div id="loginSection" class="login-box">
+
+        <h2>TUKISO Admin Login</h2>
+
+        <p>Authorised directors only.</p>
+
+        <form id="loginForm">
+
+            <label>Email Address</label>
+            <input type="email" id="loginEmail" required>
+
+            <label>Password</label>
+            <input type="password" id="loginPassword" required>
+
+            <button class="admin-button" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p id="loginMessage" aria-live="polite"></p>
+
+        <a href="index.html">Return to Company Website</a>
+
+    </div>
+
+    <!-- PRIVATE DASHBOARD -->
+
+    <div id="dashboardSection" class="hidden">
+
+        <div class="dashboard-header">
+
+            <div>
+                <h1>TUKISO Admin Dashboard</h1>
+                <p>Company Enquiry Management</p>
+                <p id="loggedInUser"></p>
+            </div>
+
+            <button class="admin-button" id="logoutButton">
+                Logout
+            </button>
+
+        </div>
+
+        <div class="stats">
+
+            <h3>Total Enquiries: <span id="totalCount">0</span></h3>
+
+            <p>New: <span id="newCount">0</span></p>
+
+            <p>In Progress: <span id="progressCount">0</span></p>
+
+            <p>Completed: <span id="completedCount">0</span></p>
+
+        </div>
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search customer name or email..."
+        >
+
+        <button class="admin-button" id="refreshButton">
+            Refresh Enquiries
+        </button>
+
+        <p id="dashboardMessage" aria-live="polite"></p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Contact</th>
+                        <th>Service</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="enquiriesTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
