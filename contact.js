@@ -13,7 +13,8 @@ contactForm.addEventListener("submit", async function(event) {
         email: document.getElementById("email").value.trim(),
         phone: document.getElementById("phone").value.trim(),
         service: document.getElementById("service").value,
-        message: document.getElementById("message").value.trim()
+        message: document.getElementById("message").value.trim(),
+        status: "New"
     };
 
     if (
