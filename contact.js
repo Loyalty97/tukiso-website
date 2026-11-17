@@ -51,6 +51,7 @@ contactForm.addEventListener("submit", async function(event) {
         console.error("Enquiry error:", error);
 
         messageBox.textContent =
+            "Error: " + error.message;
             "Sorry, we could not submit your enquiry. Please try again.";
 
     } finally {
