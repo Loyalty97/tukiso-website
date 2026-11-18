@@ -5,6 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+  .admin-header {
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fb;
+    padding: 28px 24px;
+    border-radius: 12px;
+  }
+  /* Your logo as watermark */
+  .admin-header::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 420px;
+    background-image: url('tukiso-logo.jpeg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .admin-header > * {
+    position: relative;
+    z-index: 2;
+  }
+</style>
     <title>TUKISO Admin Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
